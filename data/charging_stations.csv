@@ -1,0 +1,164 @@
+station_id,name,latitude,longitude,address,city,state,country,operator_name,network_name,access_type,opening_hours,status,connector_type,power_kw,current_type,connector_count,payment_modes,amenities,source_name,source_external_id,source_license,confidence_score,last_verified_at
+osm-node-5694140128,Unnamed charging station (delhi_ncr),28.5553810,77.2284180,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/5694140128,ODbL,45,2026-07-19T16:52:29Z
+osm-node-6404118987,Energy Efficiency Services Limited (EESL),28.6336834,77.2219946,,delhi_ncr,,India,Energy Efficiency Services Limited (EESL),,public,,unknown,unknown,,,1,,,openstreetmap,node/6404118987,ODbL,45,2026-07-19T16:52:29Z
+osm-node-6404118988,Ather,28.6336147,77.2218243,,delhi_ncr,,India,Energy Efficiency Services Limited (EESL),Ather,public,,unknown,unknown,,,2,,,openstreetmap,node/6404118988,ODbL,45,2026-07-19T16:52:29Z
+osm-node-6761961056,Unnamed charging station (delhi_ncr),28.6341092,77.2202799,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/6761961056,ODbL,45,2026-07-19T16:52:29Z
+osm-node-6761961057,Energy Efficiency Services Limited (EESL),28.6337980,77.2208339,,delhi_ncr,,India,Energy Efficiency Services Limited (EESL),,public,,unknown,unknown,,,1,,,openstreetmap,node/6761961057,ODbL,45,2026-07-19T16:52:29Z
+osm-node-6918479540,Unnamed charging station (delhi_ncr),28.5854347,77.2203893,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/6918479540,ODbL,45,2026-07-19T16:52:29Z
+osm-node-6918479558,Unnamed charging station (delhi_ncr),28.5870560,77.2120476,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/6918479558,ODbL,45,2026-07-19T16:52:29Z
+osm-node-6961442929,Unnamed charging station (delhi_ncr),28.5865591,77.1934263,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/6961442929,ODbL,45,2026-07-19T16:52:29Z
+osm-node-6961442954,Unnamed charging station (delhi_ncr),28.5866112,77.1934058,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/6961442954,ODbL,45,2026-07-19T16:52:29Z
+osm-node-6988161557,Unnamed charging station (delhi_ncr),28.6342608,77.2206422,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/6988161557,ODbL,45,2026-07-19T16:52:29Z
+osm-node-6988161559,Unnamed charging station (delhi_ncr),28.6342760,77.2209612,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/6988161559,ODbL,45,2026-07-19T16:52:29Z
+osm-node-7083796927,Unnamed charging station (delhi_ncr),28.6350123,77.2197325,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/7083796927,ODbL,45,2026-07-19T16:52:29Z
+osm-node-7083916144,EESL,28.6341151,77.2176510,,delhi_ncr,,India,EESL,,public,,unknown,unknown,,,1,,,openstreetmap,node/7083916144,ODbL,45,2026-07-19T16:52:29Z
+osm-node-7274257107,Unnamed charging station (delhi_ncr),28.6327684,77.2228545,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/7274257107,ODbL,45,2026-07-19T16:52:29Z
+osm-node-7572304299,BOTANICAL FCS,28.5651948,77.3343937,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/7572304299,ODbL,45,2026-07-19T16:52:29Z
+osm-node-8948790096,Plug N Go,28.6214714,77.2936333,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/8948790096,ODbL,45,2026-07-19T16:52:29Z
+osm-node-9237403818,Unnamed charging station (delhi_ncr),28.6309440,77.2233578,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/9237403818,ODbL,45,2026-07-19T16:52:29Z
+osm-node-9237403820,Unnamed charging station (delhi_ncr),28.6310563,77.2230955,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/9237403820,ODbL,45,2026-07-19T16:52:29Z
+osm-node-9684753376,Unnamed charging station (delhi_ncr),28.6040475,77.1977963,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/9684753376,ODbL,45,2026-07-19T16:52:29Z
+osm-node-9684753377,Unnamed charging station (delhi_ncr),28.6040394,77.1977808,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/9684753377,ODbL,45,2026-07-19T16:52:29Z
+osm-node-9684753378,Unnamed charging station (delhi_ncr),28.6040316,77.1977661,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/9684753378,ODbL,45,2026-07-19T16:52:29Z
+osm-node-9952802373,ElectriVa,28.5692695,77.1884585,,delhi_ncr,,India,ElectriVa,,public,,unknown,unknown,,,1,,shelter,openstreetmap,node/9952802373,ODbL,45,2026-07-19T16:52:29Z
+osm-node-9952802374,ElectriVa,28.5692799,77.1883649,,delhi_ncr,,India,ElectriVa,,public,,unknown,unknown,,,1,,shelter,openstreetmap,node/9952802374,ODbL,45,2026-07-19T16:52:29Z
+osm-node-10008994593,Unnamed charging station (delhi_ncr),28.6223720,77.2902460,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/10008994593,ODbL,45,2026-07-19T16:52:29Z
+osm-node-10008994594,Unnamed charging station (delhi_ncr),28.6223602,77.2902508,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/10008994594,ODbL,45,2026-07-19T16:52:29Z
+osm-node-10240014908,Unnamed charging station (delhi_ncr),28.6335730,77.2234733,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/10240014908,ODbL,45,2026-07-19T16:52:29Z
+osm-node-10241768254,Unnamed charging station (delhi_ncr),28.5903206,77.2201483,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/10241768254,ODbL,45,2026-07-19T16:52:29Z
+osm-node-10241775591,Unnamed charging station (delhi_ncr),28.5902808,77.2197587,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/10241775591,ODbL,45,2026-07-19T16:52:29Z
+osm-node-10241805232,Unnamed charging station (delhi_ncr),28.5903207,77.2201225,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/10241805232,ODbL,45,2026-07-19T16:52:29Z
+osm-node-10241808063,Unnamed charging station (delhi_ncr),28.5903054,77.2199561,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/10241808063,ODbL,45,2026-07-19T16:52:29Z
+osm-node-10564130631,Unnamed charging station (delhi_ncr),28.6003513,77.2267809,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/10564130631,ODbL,45,2026-07-19T16:52:29Z
+osm-node-10576228241,Unnamed charging station (delhi_ncr),28.5969250,77.2229085,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,shelter,openstreetmap,node/10576228241,ODbL,45,2026-07-19T16:52:29Z
+osm-node-10694479767,Unnamed charging station (delhi_ncr),28.5633830,77.2647745,,delhi_ncr,,India,,,public,,unknown,unknown,,,2,,,openstreetmap,node/10694479767,ODbL,45,2026-07-19T16:52:29Z
+osm-node-10703875766,Unnamed charging station (delhi_ncr),28.7263595,77.1628441,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/10703875766,ODbL,45,2026-07-19T16:52:29Z
+osm-node-10778957417,Unnamed charging station (delhi_ncr),28.7242899,77.1802238,,delhi_ncr,,India,,,private,,unknown,unknown,,,1,,,openstreetmap,node/10778957417,ODbL,45,2026-07-19T16:52:29Z
+osm-node-10905351902,Unnamed charging station (delhi_ncr),28.6342282,77.2195272,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/10905351902,ODbL,45,2026-07-19T16:52:29Z
+osm-node-10908485585,Unnamed charging station (delhi_ncr),28.6993047,77.2039490,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/10908485585,ODbL,45,2026-07-19T16:52:29Z
+osm-node-10908485595,Unnamed charging station (delhi_ncr),28.6992861,77.2039990,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/10908485595,ODbL,45,2026-07-19T16:52:29Z
+osm-node-10922054270,Unnamed charging station (delhi_ncr),28.6315233,77.2199032,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/10922054270,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11030050466,Unnamed charging station (delhi_ncr),28.5715108,77.2369501,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/11030050466,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11030050467,Unnamed charging station (delhi_ncr),28.5715706,77.2369881,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/11030050467,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11132023351,Unnamed charging station (delhi_ncr),28.5844378,77.2205342,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/11132023351,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11148213616,Unnamed charging station (delhi_ncr),28.6224350,77.2890724,,delhi_ncr,,India,,,public_paid,,unknown,unknown,,,1,,,openstreetmap,node/11148213616,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11368545133,Charge Karo,28.5697606,77.2381099,,delhi_ncr,,India,Charge Karo,Charge Karo,public,,unknown,unknown,,,1,,,openstreetmap,node/11368545133,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11406900271,Tata Power,28.6019401,77.2372754,,delhi_ncr,,India,Tata Power,Tata Power,public,,unknown,type2,,,1,,,openstreetmap,node/11406900271,ODbL,65,2026-07-19T16:52:29Z
+osm-node-11414388215,Unnamed charging station (delhi_ncr),28.5508417,77.2343743,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/11414388215,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11414388216,Unnamed charging station (delhi_ncr),28.5508303,77.2343614,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/11414388216,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11421789517,Unnamed charging station (delhi_ncr),28.6177007,77.2870300,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/11421789517,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11421789521,Unnamed charging station (delhi_ncr),28.6176864,77.2870367,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/11421789521,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11449177423,Unnamed charging station (delhi_ncr),28.6606575,77.1433393,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/11449177423,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11454822427,Unnamed charging station (delhi_ncr),28.6672518,77.2532299,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/11454822427,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11454822430,Unnamed charging station (delhi_ncr),28.6672527,77.2532856,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/11454822430,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11454822431,Unnamed charging station (delhi_ncr),28.6672520,77.2532583,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/11454822431,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11478464616,Unnamed charging station (delhi_ncr),28.6229566,77.2989161,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/11478464616,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11601441778,Unnamed charging station (delhi_ncr),28.6531076,77.1562309,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/11601441778,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11601441779,Switch Station,28.6530158,77.1563495,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/11601441779,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11601441781,Unnamed charging station (delhi_ncr),28.6531276,77.1561984,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/11601441781,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11637354348,Unnamed charging station (delhi_ncr),28.6338798,77.2175045,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/11637354348,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11642004107,Unnamed charging station (delhi_ncr),28.6272979,77.2319249,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/11642004107,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11697454694,Unnamed charging station (delhi_ncr),28.5508115,77.2510865,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/11697454694,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11697454712,Unnamed charging station (delhi_ncr),28.5508585,77.2510569,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/11697454712,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11771960493,Unnamed charging station (delhi_ncr),28.5544887,77.1959390,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/11771960493,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11795617114,Xicom,28.6286105,77.2196866,,delhi_ncr,,India,Xicom,Xicom,public,,unknown,unknown,,,1,,,openstreetmap,node/11795617114,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11821495340,Charj Karo,28.6799791,77.2085882,,delhi_ncr,,India,Charj Karo,Charj Karo,public,,unknown,unknown,,,3,,,openstreetmap,node/11821495340,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11871740090,Unnamed charging station (delhi_ncr),28.5649281,77.2245367,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/11871740090,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11873258339,Unnamed charging station (delhi_ncr),28.5540272,77.2127580,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/11873258339,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11875814624,Ganpati Smart Point,28.6775315,77.2080457,,delhi_ncr,,India,,,public_paid,,unknown,unknown,,,1,,,openstreetmap,node/11875814624,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11875926233,EESL,28.6219707,77.1948236,,delhi_ncr,,India,EESL,EESL,public,,unknown,unknown,,,4,free,,openstreetmap,node/11875926233,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11934676233,Unnamed charging station (delhi_ncr),28.5866420,77.2407912,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/11934676233,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11982372933,One Delhi,28.5964138,77.2935572,,delhi_ncr,,India,One Delhi,,public,,unknown,unknown,,,1,,,openstreetmap,node/11982372933,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11982458750,CESL,28.5964138,77.2935572,,delhi_ncr,,India,CESL,,public,,unknown,unknown,,,1,,,openstreetmap,node/11982458750,ODbL,45,2026-07-19T16:52:29Z
+osm-node-12064267225,Unnamed charging station (delhi_ncr),28.6382309,77.2873054,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/12064267225,ODbL,45,2026-07-19T16:52:29Z
+osm-node-12098546110,Ather,28.6316265,77.2220040,,delhi_ncr,,India,Energy Efficiency Services Limited (EESL),Ather,public,,unknown,unknown,,,2,,,openstreetmap,node/12098546110,ODbL,45,2026-07-19T16:52:29Z
+osm-node-12123396312,Yuma,28.6952457,77.2153259,,delhi_ncr,,India,Yuma,Yuma,public,,unknown,unknown,,,1,,,openstreetmap,node/12123396312,ODbL,45,2026-07-19T16:52:29Z
+osm-node-12196467738,Battery Smart,28.6886480,77.2067275,,delhi_ncr,,India,Battery Smart,Battery Smart,public_paid,,unknown,unknown,,,3,,,openstreetmap,node/12196467738,ODbL,45,2026-07-19T16:52:29Z
+osm-node-12352455245,Unnamed charging station (delhi_ncr),28.6492602,77.3165820,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/12352455245,ODbL,45,2026-07-19T16:52:29Z
+osm-node-12596574170,Electric Vehicle Charging Station,28.6622203,77.3000898,,delhi_ncr,,India,Electric Vehicle Charging Station,Electric Vehicle Charging Station,public,,unknown,unknown,,,1,,,openstreetmap,node/12596574170,ODbL,45,2026-07-19T16:52:29Z
+osm-node-12672890507,Unnamed charging station (delhi_ncr),28.5904687,77.2331036,,delhi_ncr,,India,,,public_paid,,unknown,unknown,,,1,,,openstreetmap,node/12672890507,ODbL,45,2026-07-19T16:52:29Z
+osm-node-12811975823,Okaya,28.5679245,77.2427016,,delhi_ncr,,India,Okaya,Okaya,public,,unknown,unknown,,,1,,,openstreetmap,node/12811975823,ODbL,45,2026-07-19T16:52:29Z
+osm-node-12823839873,Unnamed charging station (delhi_ncr),28.6251684,77.3056013,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/12823839873,ODbL,45,2026-07-19T16:52:29Z
+osm-node-12894372007,Unnamed charging station (delhi_ncr),28.6112384,77.2449181,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/12894372007,ODbL,45,2026-07-19T16:52:29Z
+osm-node-12901933482,Unnamed charging station (delhi_ncr),28.5875463,77.2262130,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/12901933482,ODbL,45,2026-07-19T16:52:29Z
+osm-node-12901933483,Unnamed charging station (delhi_ncr),28.5875200,77.2262180,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/12901933483,ODbL,45,2026-07-19T16:52:29Z
+osm-node-12903526837,Yuma,28.5810704,77.2390952,,delhi_ncr,,India,Yuma,Yuma,public,,unknown,unknown,,,1,,,openstreetmap,node/12903526837,ODbL,45,2026-07-19T16:52:29Z
+osm-node-12972970667,Unnamed charging station (delhi_ncr),28.5793023,77.1883978,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/12972970667,ODbL,45,2026-07-19T16:52:29Z
+osm-node-12973875562,Unnamed charging station (delhi_ncr),28.5613597,77.0813217,,delhi_ncr,,India,,,no,,unknown,unknown,,,1,,,openstreetmap,node/12973875562,ODbL,45,2026-07-19T16:52:29Z
+osm-node-13110034737,BAAZ,28.6856903,77.2053450,,delhi_ncr,,India,BAAZ,BAAZ,public_paid,,unknown,unknown,,,1,,,openstreetmap,node/13110034737,ODbL,45,2026-07-19T16:52:29Z
+osm-node-13110034738,Charj Karo,28.6857175,77.2053595,,delhi_ncr,,India,Charj Karo,Charj Karo,public_paid,,unknown,unknown,,,1,,,openstreetmap,node/13110034738,ODbL,45,2026-07-19T16:52:29Z
+osm-node-13294609048,Unnamed charging station (delhi_ncr),28.5871690,77.2413624,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/13294609048,ODbL,45,2026-07-19T16:52:29Z
+osm-node-13351067902,Unnamed charging station (delhi_ncr),28.6185254,77.2871601,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/13351067902,ODbL,45,2026-07-19T16:52:29Z
+osm-node-13624573647,EESL,28.5564985,77.2326653,,delhi_ncr,,India,EESL,EESL,public_paid,,unknown,ccs2,,dc,1,,,openstreetmap,node/13624573647,ODbL,65,2026-07-19T16:52:29Z
+osm-node-13624573647,EESL,28.5564985,77.2326653,,delhi_ncr,,India,EESL,EESL,public_paid,,unknown,chademo,,dc,1,,,openstreetmap,node/13624573647,ODbL,65,2026-07-19T16:52:29Z
+osm-node-13624573647,EESL,28.5564985,77.2326653,,delhi_ncr,,India,EESL,EESL,public_paid,,unknown,type2,,dc,1,,,openstreetmap,node/13624573647,ODbL,65,2026-07-19T16:52:29Z
+osm-node-13624573656,EESL,28.5564627,77.2326631,,delhi_ncr,,India,EESL,EESL,public_paid,,unknown,ccs2,,dc,1,,,openstreetmap,node/13624573656,ODbL,65,2026-07-19T16:52:29Z
+osm-node-13624573656,EESL,28.5564627,77.2326631,,delhi_ncr,,India,EESL,EESL,public_paid,,unknown,chademo,,dc,1,,,openstreetmap,node/13624573656,ODbL,65,2026-07-19T16:52:29Z
+osm-node-13624573656,EESL,28.5564627,77.2326631,,delhi_ncr,,India,EESL,EESL,public_paid,,unknown,type2,,dc,1,,,openstreetmap,node/13624573656,ODbL,65,2026-07-19T16:52:29Z
+osm-node-13632992904,Honda e:swap,28.6253953,77.2332995,,delhi_ncr,,India,Honda e:swap,Honda e:swap,public,,unknown,unknown,,,1,,,openstreetmap,node/13632992904,ODbL,45,2026-07-19T16:52:29Z
+osm-node-13632992905,Yuma,28.6253970,77.2331692,,delhi_ncr,,India,Yuma,Yuma,public,,unknown,unknown,,,1,,,openstreetmap,node/13632992905,ODbL,45,2026-07-19T16:52:29Z
+osm-node-13633628620,Unnamed charging station (delhi_ncr),28.6914671,77.2092258,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/13633628620,ODbL,45,2026-07-19T16:52:29Z
+osm-node-13688377301,Tesla Supercharger,28.5515313,77.1218893,,delhi_ncr,,India,Tesla,Tesla Supercharger,public_paid,24/7,unknown,unknown,,,1,,,openstreetmap,node/13688377301,ODbL,45,2026-07-19T16:52:29Z
+osm-node-13688398004,Unnamed charging station (delhi_ncr),28.5515415,77.1215980,,delhi_ncr,,India,,,public_paid,24/7,unknown,unknown,,,1,,,openstreetmap,node/13688398004,ODbL,45,2026-07-19T16:52:29Z
+osm-node-13746020730,Unnamed charging station (delhi_ncr),28.5694639,77.2044503,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,shelter,openstreetmap,node/13746020730,ODbL,45,2026-07-19T16:52:29Z
+osm-node-13757728976,Unnamed charging station (delhi_ncr),28.5805655,77.1796965,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/13757728976,ODbL,45,2026-07-19T16:52:29Z
+osm-node-13800324487,Unnamed charging station (delhi_ncr),28.5962686,77.2046077,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/13800324487,ODbL,45,2026-07-19T16:52:29Z
+osm-node-13807361239,Unnamed charging station (delhi_ncr),28.5805088,77.1793725,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/13807361239,ODbL,45,2026-07-19T16:52:29Z
+osm-node-13820100532,Vida,28.5592932,77.2321440,,delhi_ncr,,India,Vida,Vida,public,,unknown,unknown,,,1,,,openstreetmap,node/13820100532,ODbL,45,2026-07-19T16:52:29Z
+osm-node-13890311968,IGL EV charging station,28.5899305,77.2292780,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/13890311968,ODbL,45,2026-07-19T16:52:29Z
+osm-node-13931872808,Unnamed charging station (delhi_ncr),28.5641298,77.3333090,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/13931872808,ODbL,45,2026-07-19T16:52:29Z
+osm-node-13969467531,ElectriVa,28.5698471,77.1852904,,delhi_ncr,,India,ElectriVa,ElectriVa,public,,unknown,unknown,,,1,,,openstreetmap,node/13969467531,ODbL,45,2026-07-19T16:52:29Z
+osm-node-13969467543,Unnamed charging station (delhi_ncr),28.5694049,77.1651098,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/13969467543,ODbL,45,2026-07-19T16:52:29Z
+osm-node-13982741917,Yuma,28.5610466,77.2312484,,delhi_ncr,,India,Yuma,Yuma,public,,unknown,unknown,,,1,,,openstreetmap,node/13982741917,ODbL,45,2026-07-19T16:52:29Z
+osm-node-13982895901,Switch Delhi,28.5761230,77.0695080,,delhi_ncr,,India,Switch Delhi,,public,,unknown,unknown,,,1,,,openstreetmap,node/13982895901,ODbL,45,2026-07-19T16:52:29Z
+osm-node-13997784674,Unnamed charging station (delhi_ncr),28.5688051,77.2214679,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/13997784674,ODbL,45,2026-07-19T16:52:29Z
+osm-node-13999844990,ElectriVa,28.5686034,77.2195292,,delhi_ncr,,India,ElectriVa,ElectriVa,public,,unknown,unknown,,,1,,,openstreetmap,node/13999844990,ODbL,45,2026-07-19T16:52:29Z
+osm-node-13999844996,Yuma,28.5686067,77.2204883,,delhi_ncr,,India,Yuma,Yuma,public,,unknown,unknown,,,1,,,openstreetmap,node/13999844996,ODbL,45,2026-07-19T16:52:29Z
+osm-node-14016861905,Unnamed charging station (delhi_ncr),28.5846190,77.2204289,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/14016861905,ODbL,45,2026-07-19T16:52:29Z
+osm-node-14017165298,Glida,28.5680604,77.2235189,,delhi_ncr,,India,Glida,Glida,public_paid,,unknown,unknown,,,2,,,openstreetmap,node/14017165298,ODbL,45,2026-07-19T16:52:29Z
+osm-node-14017179737,Unnamed charging station (delhi_ncr),28.5827644,77.2511763,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/14017179737,ODbL,45,2026-07-19T16:52:29Z
+osm-node-14017179749,Unnamed charging station (delhi_ncr),28.5838252,77.2502725,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/14017179749,ODbL,45,2026-07-19T16:52:29Z
+osm-node-14017179796,Honda,28.5648060,77.2400299,,delhi_ncr,,India,Honda,Honda,public,,unknown,unknown,,,1,,,openstreetmap,node/14017179796,ODbL,45,2026-07-19T16:52:29Z
+osm-node-14017751400,Unnamed charging station (delhi_ncr),28.5719035,77.2578799,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/14017751400,ODbL,45,2026-07-19T16:52:29Z
+osm-node-14017793416,Unnamed charging station (delhi_ncr),28.5685539,77.2207569,,delhi_ncr,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/14017793416,ODbL,45,2026-07-19T16:52:29Z
+osm-node-9202909866,Ather Charging Grid,12.9756680,77.6413089,,bangalore,,India,Ather Energy,,public,,unknown,unknown,,,8,,,openstreetmap,node/9202909866,ODbL,45,2026-07-19T16:52:29Z
+osm-node-9527967749,Unnamed charging station (bangalore),13.0415766,77.6204588,,bangalore,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/9527967749,ODbL,45,2026-07-19T16:52:29Z
+osm-node-9796873472,BESCOM,12.9947371,77.6993007,,bangalore,,India,BESCOM,,public,,unknown,unknown,,,2,,,openstreetmap,node/9796873472,ODbL,45,2026-07-19T16:52:29Z
+osm-node-9811396097,Unnamed charging station (bangalore),12.9775829,77.6389895,,bangalore,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/9811396097,ODbL,45,2026-07-19T16:52:29Z
+osm-node-9917415768,Unnamed charging station (bangalore),12.9733967,77.6357561,,bangalore,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/9917415768,ODbL,45,2026-07-19T16:52:29Z
+osm-node-9917415769,Unnamed charging station (bangalore),12.9733738,77.6357554,,bangalore,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/9917415769,ODbL,45,2026-07-19T16:52:29Z
+osm-node-10177662896,Unnamed charging station (bangalore),12.9137732,77.6441735,,bangalore,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/10177662896,ODbL,45,2026-07-19T16:52:29Z
+osm-node-10293872605,inGO,12.9712776,77.6078832,,bangalore,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/10293872605,ODbL,45,2026-07-19T16:52:29Z
+osm-node-10294506356,Yulu,12.9764825,77.6268299,,bangalore,,India,Yulu,Yulu,public,,unknown,unknown,,,1,,,openstreetmap,node/10294506356,ODbL,45,2026-07-19T16:52:29Z
+osm-node-10763275239,Magenta ChargeGrid Charging Station,12.9154635,77.6158909,,bangalore,,India,Magenta Group,,public_paid,,unknown,unknown,,,1,,,openstreetmap,node/10763275239,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11178123519,Ather,12.9576825,77.5684466,,bangalore,,India,Ather,Ather,public,,unknown,unknown,,,1,,,openstreetmap,node/11178123519,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11214889013,Pulse,12.9805484,77.5978893,,bangalore,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/11214889013,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11283405698,Ola Hypercharger,12.9322172,77.6142725,,bangalore,,India,,,public,,unknown,unknown,,,4,,,openstreetmap,node/11283405698,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11286212936,BESCOM,12.9169070,77.6102709,,bangalore,,India,BESCOM,BESCOM,public,,unknown,unknown,,,2,,,openstreetmap,node/11286212936,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11297781805,Hero Vida,12.9710109,77.5977880,,bangalore,,India,Hero Vida,Hero Vida,public,,unknown,unknown,,,1,,,openstreetmap,node/11297781805,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11408768738,Unnamed charging station (bangalore),12.9736666,77.5830855,,bangalore,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/11408768738,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11463172582,Honda e:swap,12.9301946,77.6148303,,bangalore,,India,Honda e:swap,Honda e:swap,public,,unknown,unknown,,,1,,,openstreetmap,node/11463172582,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11542817290,Unnamed charging station (bangalore),12.9362684,77.6076884,,bangalore,,India,,,public_paid,,unknown,unknown,,,1,,,openstreetmap,node/11542817290,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11927677057,Ola Hyper Charger,12.9337755,77.6236693,,bangalore,,India,ChargePoint,ChargePoint,public,,unknown,unknown,,,2,free,,openstreetmap,node/11927677057,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11927677058,Battery Swap,12.9285835,77.6241904,,bangalore,,India,ChargePoint,ChargePoint,public,,unknown,unknown,,,1,,,openstreetmap,node/11927677058,ODbL,45,2026-07-19T16:52:29Z
+osm-node-11936564076,Ather Charging Station,12.9311453,77.6238461,,bangalore,,India,ChargePoint,ChargePoint,public,,unknown,unknown,,,1,free,,openstreetmap,node/11936564076,ODbL,45,2026-07-19T16:52:29Z
+osm-node-12002046035,Unnamed charging station (bangalore),12.9778550,77.5812757,,bangalore,,India,,,public_paid,,unknown,unknown,,,1,,,openstreetmap,node/12002046035,ODbL,45,2026-07-19T16:52:29Z
+osm-node-12016136802,Unnamed charging station (bangalore),13.0270010,77.5425776,,bangalore,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/12016136802,ODbL,45,2026-07-19T16:52:29Z
+osm-node-12078138004,Unnamed charging station (bangalore),12.9810756,77.5966804,,bangalore,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/12078138004,ODbL,45,2026-07-19T16:52:29Z
+osm-node-12100028686,Honda e:swap,13.0000143,77.5499059,,bangalore,,India,Honda e:swap,,public_paid,,unknown,unknown,,,1,,,openstreetmap,node/12100028686,ODbL,45,2026-07-19T16:52:29Z
+osm-node-12101733050,Ola Hypercharger,12.9654060,77.6002473,,bangalore,,India,Ola Hypercharger,Ola Hypercharger,public,,unknown,unknown,,,1,,,openstreetmap,node/12101733050,ODbL,45,2026-07-19T16:52:29Z
+osm-node-12125802596,Honda e:swap,12.9781045,77.6389105,,bangalore,,India,Honda e:swap,,public_paid,,unknown,unknown,,,1,,,openstreetmap,node/12125802596,ODbL,45,2026-07-19T16:52:29Z
+osm-node-12169023077,Battery Swapping Station,12.8894274,77.5563647,,bangalore,,India,,,public,24/7,unknown,unknown,,,1,,,openstreetmap,node/12169023077,ODbL,45,2026-07-19T16:52:29Z
+osm-node-12492566397,Honda e:swap,12.9383537,77.5802162,,bangalore,,India,Honda e:swap,,public_paid,,unknown,unknown,,,1,,,openstreetmap,node/12492566397,ODbL,45,2026-07-19T16:52:29Z
+osm-node-12492581619,Honda e:swap,12.9217078,77.5805052,,bangalore,,India,Honda e:swap,,public_paid,,unknown,unknown,,,1,,,openstreetmap,node/12492581619,ODbL,45,2026-07-19T16:52:29Z
+osm-node-12519643346,Honda e:swap,13.0330528,77.5337570,,bangalore,,India,Honda e:swap,,public_paid,,unknown,unknown,,,1,,,openstreetmap,node/12519643346,ODbL,45,2026-07-19T16:52:29Z
+osm-node-12788139581,Honda e:swap,12.9861844,77.6156891,,bangalore,,India,Honda e:swap,,public_paid,,unknown,unknown,,,1,,,openstreetmap,node/12788139581,ODbL,45,2026-07-19T16:52:29Z
+osm-node-12968864355,Unnamed charging station (bangalore),13.0200960,77.6929133,,bangalore,,India,,,private,,unknown,unknown,,,1,,,openstreetmap,node/12968864355,ODbL,45,2026-07-19T16:52:29Z
+osm-node-13277046524,Honda e:swap,13.0235213,77.5497316,,bangalore,,India,Honda e:swap,,public_paid,,unknown,unknown,,,12,,,openstreetmap,node/13277046524,ODbL,45,2026-07-19T16:52:29Z
+osm-node-13277046525,Honda e:swap,13.0235317,77.5497115,,bangalore,,India,Honda e:swap,,public_paid,,unknown,unknown,,,12,,,openstreetmap,node/13277046525,ODbL,45,2026-07-19T16:52:29Z
+osm-node-13566426890,Sun Mobility,13.0001758,77.6869647,,bangalore,,India,Sun Mobility,,public,,unknown,unknown,,,1,,,openstreetmap,node/13566426890,ODbL,45,2026-07-19T16:52:29Z
+osm-node-3612553734,Unnamed charging station (hyderabad),17.3649588,78.4749286,,hyderabad,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/3612553734,ODbL,45,2026-07-19T16:52:29Z
+osm-node-9992403939,Unnamed charging station (chennai),13.1085033,80.2810805,,chennai,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/9992403939,ODbL,45,2026-07-19T16:52:29Z
+osm-node-10036499344,Unnamed charging station (chennai),13.0317217,80.2419487,,chennai,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/10036499344,ODbL,45,2026-07-19T16:52:29Z
+osm-node-12624560446,eesl,13.0791255,80.2615720,,chennai,,India,eesl,eesl,public,24/7,unknown,ccs2,,dc,60,free,shelter,openstreetmap,node/12624560446,ODbL,65,2026-07-19T16:52:29Z
+osm-node-13619600201,Unnamed charging station (chennai),13.0433272,80.2737310,,chennai,,India,,,public,,unknown,unknown,,,1,,,openstreetmap,node/13619600201,ODbL,45,2026-07-19T16:52:29Z

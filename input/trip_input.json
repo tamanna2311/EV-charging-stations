@@ -1,0 +1,35 @@
+{
+  "trip_name": "Delhi local demo",
+  "origin": {
+    "label": "India Gate, Delhi",
+    "latitude": 28.6129,
+    "longitude": 77.2295
+  },
+  "destination": {
+    "label": "Qutub Minar, Delhi",
+    "latitude": 28.5245,
+    "longitude": 77.1855
+  },
+  "vehicle": {
+    "name": "Tata Nexon EV demo profile",
+    "battery_capacity_kwh": 40.5,
+    "current_soc_percent": 19,
+    "reserve_soc_percent": 15,
+    "consumption_wh_per_km": 145,
+    "safety_buffer_percent": 10,
+    "connector_types": ["ccs2", "type2"],
+    "max_ac_kw": 7.2,
+    "max_dc_kw": 50
+  },
+  "preferences": {
+    "mode": "balanced",
+    "max_detour_km": 12,
+    "minimum_station_confidence": 40,
+    "allow_unverified_connectors": true,
+    "maximum_results": 5
+  },
+  "route": {
+    "road_distance_multiplier": 1.25,
+    "selected_route_points": []
+  }
+}

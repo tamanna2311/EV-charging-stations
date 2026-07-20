@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Plan an EV route and find battery-aware charging stops.">
+    <title>EV RouteWise — Smart charging stops</title>
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="planner-panel" aria-label="Trip planner">
+        <header class="brand-row">
+          <a class="brand" href="/" aria-label="EV RouteWise home">
+            <span class="brand-mark" aria-hidden="true">⚡</span>
+            <span><strong>EV RouteWise</strong><small>Charge with confidence</small></span>
+          </a>
+          <span class="seed-badge" title="OpenStreetMap-derived station seed">{{ station_count }} stations</span>
+        </header>
+
+        <div class="panel-scroll">
+          <section class="intro" id="intro">
+            <p class="eyebrow">Battery-aware route planning</p>
+            <h1>Know where to charge <em>before</em> you drive.</h1>
+            <p>We compare your route, usable battery, reserve and connector to recommend a reachable stop—not simply the nearest pin.</p>
+          </section>
+
+          <form id="planner-form" novalidate>
+            <section class="form-section">
+              <div class="section-heading">
+                <span class="step-number">01</span>
+                <div><h2>Your route</h2><p>Search a place or pick directly on the map.</p></div>
+              </div>
+
+              <div class="route-inputs">
+                <div class="place-field origin-field">
+                  <span class="route-dot origin-dot" aria-hidden="true"></span>
+                  <label for="origin-input">Starting point</label>
+                  <div class="input-action-row">
+                    <input id="origin-input" value="India Gate, New Delhi" autocomplete="off" required>
+                    <button class="icon-button locate-button" type="button" data-place="origin" aria-label="Use my location" title="Use my location">⌖</button>
+                    <button class="icon-button pick-button" type="button" data-place="origin" aria-label="Pick starting point on map" title="Pick on map">⌁</button>
+                  </div>
+                  <div class="place-status" id="origin-status">Demo location selected</div>
+                </div>
+
+                <button class="swap-button" id="swap-route" type="button" aria-label="Swap origin and destination" title="Swap route">⇅</button>
+
+                <div class="place-field destination-field">
+                  <span class="route-dot destination-dot" aria-hidden="true"></span>
+                  <label for="destination-input">Destination</label>
+                  <div class="input-action-row">
+                    <input id="destination-input" value="Qutub Minar, New Delhi" autocomplete="off" required>
+                    <button class="icon-button pick-button" type="button" data-place="destination" aria-label="Pick destination on map" title="Pick on map">⌁</button>
+                  </div>
+                  <div class="place-status" id="destination-status">Demo location selected</div>
+                </div>
+              </div>
+            </section>
+
+            <section class="form-section">
+              <div class="section-heading">
+                <span class="step-number">02</span>
+                <div><h2>Your EV</h2><p>Use dashboard values for the most useful estimate.</p></div>
+              </div>
+
+              <div class="field-grid two-columns">
+                <label class="field"><span>Battery size <small>kWh</small></span><input id="battery-capacity" type="number" min="5" max="250" step="0.1" value="40.5" required></label>
+                <label class="field"><span>Current battery <small>%</small></span><input id="current-soc" type="number" min="0" max="100" step="1" value="19" required></label>
+                <label class="field"><span>Keep in reserve <small>%</small></span><input id="reserve-soc" type="number" min="0" max="50" step="1" value="15" required></label>
+                <label class="field"><span>Efficiency <small>Wh/km</small></span><input id="consumption" type="number" min="60" max="500" step="1" value="145" required></label>
+              </div>
+
+              <fieldset class="connector-fieldset">
+                <legend>Charging connectors</legend>
+                <div class="connector-options">
+                  <label class="connector-chip"><input type="checkbox" name="connector" value="ccs2" checked><span>CCS2</span></label>
+                  <label class="connector-chip"><input type="checkbox" name="connector" value="type2" checked><span>Type 2</span></label>
+                  <label class="connector-chip"><input type="checkbox" name="connector" value="chademo"><span>CHAdeMO</span></label>
+                  <label class="connector-chip"><input type="checkbox" name="connector" value="gbt"><span>GB/T</span></label>
+                </div>
+              </fieldset>
+
+              <details class="advanced-settings">
+                <summary>Charging and driving details</summary>
+                <div class="field-grid two-columns details-grid">
+                  <label class="field"><span>Max AC rate <small>kW</small></span><input id="max-ac" type="number" min="1" max="50" value="7.2" step="0.1"></label>
+                  <label class="field"><span>Max DC rate <small>kW</small></span><input id="max-dc" type="number" min="1" max="500" value="50" step="1"></label>
+                  <label class="field"><span>Driving buffer <small>%</small></span><input id="safety-buffer" type="number" min="0" max="40" value="10" step="1"></label>
+                  <label class="field"><span>Max detour <small>km</small></span><input id="max-detour" type="number" min="0.5" max="50" value="10" step="0.5"></label>
+                </div>
+              </details>
+            </section>
+
+            <section class="form-section compact-section">
+              <div class="section-heading">
+                <span class="step-number">03</span>
+                <div><h2>What matters most?</h2></div>
+              </div>
+              <div class="priority-options" role="radiogroup" aria-label="Recommendation priority">
+                <label><input type="radio" name="priority" value="balanced" checked><span><b>Balanced</b><small>Best overall</small></span></label>
+                <label><input type="radio" name="priority" value="fastest"><span><b>Fastest</b><small>Higher power</small></span></label>
+                <label><input type="radio" name="priority" value="shortest_detour"><span><b>Closest</b><small>Less detour</small></span></label>
+                <label><input type="radio" name="priority" value="safest"><span><b>Safest</b><small>More margin</small></span></label>
+              </div>
+              <label class="toggle-row">
+                <input id="allow-unverified" type="checkbox" checked>
+                <span class="toggle" aria-hidden="true"></span>
+                <span><b>Include unverified connector fallbacks</b><small>Clearly marked; useful where public data is incomplete</small></span>
+              </label>
+            </section>
+
+            <div class="form-error" id="form-error" role="alert" hidden></div>
+            <button class="plan-button" id="plan-button" type="submit"><span>Find my best charging stop</span><b aria-hidden="true">→</b></button>
+          </form>
+
+          <section id="results" class="results" aria-live="polite" hidden>
+            <div class="results-heading"><div><p class="eyebrow">Your trip plan</p><h2>Recommendation</h2></div><button id="edit-trip" class="text-button" type="button">Edit trip</button></div>
+            <div id="decision-card"></div>
+            <div id="metrics" class="metric-grid"></div>
+            <div id="station-results"></div>
+            <div id="warnings"></div>
+            <button id="plan-another" class="secondary-button" type="button">Plan another trip</button>
+          </section>
+
+          <footer class="panel-footer">
+            <p>Estimates only. Confirm connector, status and availability in the charging operator’s app before departure.</p>
+            <p>Maps & station data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap contributors</a>.</p>
+          </footer>
+        </div>
+      </aside>
+
+      <section class="map-panel" aria-label="Route map">
+        <div id="map"></div>
+        <div class="map-toolbar">
+          <span class="live-dot"></span>
+          <span id="map-status">Set your route to begin</span>
+        </div>
+        <div class="map-legend">
+          <span><i class="legend-line"></i>Route</span>
+          <span><i class="legend-pin recommended-pin"></i>Recommended</span>
+          <span><i class="legend-pin fallback-pin"></i>Verify first</span>
+        </div>
+        <div class="map-pick-message" id="map-pick-message" hidden>Click the map to set the location · <button type="button" id="cancel-pick">Cancel</button></div>
+      </section>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
