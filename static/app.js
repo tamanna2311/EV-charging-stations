@@ -17,9 +17,9 @@
 
   const map = L.map("map", { zoomControl: false, preferCanvas: true }).setView([28.58, 77.205], 12);
   L.control.zoom({ position: "bottomright" }).addTo(map);
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
   }).addTo(map);
 
   const markerIcon = (kind) => L.divIcon({
