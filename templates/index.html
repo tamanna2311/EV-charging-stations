@@ -7,7 +7,7 @@
     <title>EV RouteWise - Find the right charging stop</title>
     <link rel="preconnect" href="https://unpkg.com">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}?v={{ asset_version }}">
   </head>
   <body>
     <main class="app-shell">
@@ -119,6 +119,7 @@
           <section id="results" class="results" aria-live="polite" hidden>
             <div class="results-heading"><div><p class="eyebrow">Your charging plan</p><h2>Best stop for this trip</h2></div><button id="edit-trip" class="text-button" type="button">Change details</button></div>
             <div id="decision-card"></div>
+            <div id="route-options" class="route-options"></div>
             <div id="metrics" class="metric-grid"></div>
             <div id="station-results"></div>
             <div id="warnings"></div>
@@ -148,6 +149,6 @@
     </main>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-    <script src="{{ url_for('static', filename='app.js') }}"></script>
+    <script src="{{ url_for('static', filename='app.js') }}?v={{ asset_version }}"></script>
   </body>
 </html>

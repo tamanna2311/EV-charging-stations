@@ -71,39 +71,51 @@ def geocode(query: str) -> list[dict[str, Any]]:
     return results
 
 
+def _format_route(route: dict[str, Any], source: str, route_index: int) -> dict[str, Any]:
+    coordinates = route["geometry"]["coordinates"]
+    points = [
+        {"latitude": float(latitude), "longitude": float(longitude), "label": ""}
+        for longitude, latitude in coordinates
+    ]
+    return {
+        "points": points,
+        "distance_km": float(route["distance"]) / 1000,
+        "duration_minutes": float(route["duration"]) / 60,
+        "source": source,
+        "route_index": route_index,
+    }
+
+
 @lru_cache(maxsize=256)
-def road_route(origin_lat: float, origin_lon: float, destination_lat: float, destination_lon: float) -> dict[str, Any]:
-    coordinates = f"{origin_lon:.6f},{origin_lat:.6f};{destination_lon:.6f},{destination_lat:.6f}"
+def road_routes(origin_lat: float, origin_lon: float, destination_lat: float, destination_lon: float) -> tuple[dict[str, Any], ...]:
+    coordinates_text = f"{origin_lon:.6f},{origin_lat:.6f};{destination_lon:.6f},{destination_lat:.6f}"
     try:
         response = _session.get(
-            f"{OSRM_URL.rstrip('/')}/route/v1/driving/{coordinates}",
-            params={"overview": "full", "geometries": "geojson", "steps": "false"},
+            f"{OSRM_URL.rstrip('/')}/route/v1/driving/{coordinates_text}",
+            params={"overview": "full", "geometries": "geojson", "steps": "false", "alternatives": "true"},
             timeout=14,
         )
         response.raise_for_status()
         data = response.json()
         if data.get("code") != "Ok" or not data.get("routes"):
             raise ExternalServiceError("No drivable route was found between these locations")
-        best = data["routes"][0]
-        coordinates = best["geometry"]["coordinates"]
-        points = [
-            {"latitude": float(latitude), "longitude": float(longitude), "label": ""}
-            for longitude, latitude in coordinates
-        ]
-        return {
-            "points": points,
-            "distance_km": float(best["distance"]) / 1000,
-            "duration_minutes": float(best["duration"]) / 60,
-            "source": "osrm",
-        }
+        return tuple(_format_route(route, "osrm", index) for index, route in enumerate(data["routes"][:3]))
     except ExternalServiceError:
         raise
     except (requests.RequestException, ValueError, KeyError, TypeError) as exc:
         raise ExternalServiceError("Live road routing is temporarily unavailable") from exc
 
 
-def route_or_fallback(origin: Point, destination: Point) -> dict[str, Any]:
+def road_route(origin_lat: float, origin_lon: float, destination_lat: float, destination_lon: float) -> dict[str, Any]:
+    return road_routes(origin_lat, origin_lon, destination_lat, destination_lon)[0]
+
+
+def route_options_or_fallback(origin: Point, destination: Point) -> list[dict[str, Any]]:
     try:
-        return road_route(origin.latitude, origin.longitude, destination.latitude, destination.longitude)
+        return list(road_routes(origin.latitude, origin.longitude, destination.latitude, destination.longitude))
     except ExternalServiceError:
-        return {"points": [], "distance_km": None, "duration_minutes": None, "source": "estimated"}
+        return [{"points": [], "distance_km": None, "duration_minutes": None, "source": "estimated", "route_index": 0}]
+
+
+def route_or_fallback(origin: Point, destination: Point) -> dict[str, Any]:
+    return route_options_or_fallback(origin, destination)[0]

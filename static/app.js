@@ -6,7 +6,15 @@
     origin: { label: "India Gate, New Delhi", latitude: 28.6129, longitude: 77.2295 },
     destination: { label: "Qutub Minar, New Delhi", latitude: 28.5245, longitude: 77.1855 },
   };
-  const state = { places: { ...demoPlaces }, pickMode: null, markers: {}, stationMarkers: [], routeLine: null };
+  const state = {
+    places: { ...demoPlaces },
+    pickMode: null,
+    markers: {},
+    stationMarkers: [],
+    routeLine: null,
+    routePlans: [],
+    selectedRouteIndex: 0,
+  };
 
   const form = document.querySelector("#planner-form");
   const results = document.querySelector("#results");
@@ -218,6 +226,53 @@
     return `<div class="metric"><b>${escapeHtml(value)}</b><span>${escapeHtml(label)}</span></div>`;
   }
 
+  function routeDuration(plan) {
+    if (!plan.route.duration_minutes) return "Estimated time";
+    return plan.route.duration_minutes < 60
+      ? `${plan.route.duration_minutes} min`
+      : `${Math.floor(plan.route.duration_minutes / 60)}h ${plan.route.duration_minutes % 60}m`;
+  }
+
+  function renderRouteOptions() {
+    const container = document.querySelector("#route-options");
+    if (state.routePlans.length <= 1) {
+      const plan = state.routePlans[0];
+      container.innerHTML = plan ? `
+        <div class="single-route-note">
+          <div>
+            <h3>One practical route found</h3>
+            <p>This trip has one clear road route. The charging stops below are matched to it.</p>
+          </div>
+          <span>${plan.route.distance_km} km · ${escapeHtml(routeDuration(plan))}</span>
+        </div>` : "";
+      return;
+    }
+    container.innerHTML = `
+      <div class="route-options-heading">
+        <h3>Choose your route</h3>
+        <span>Charging stops update with the route</span>
+      </div>
+      <div class="route-option-list">
+        ${state.routePlans.map((plan, index) => {
+          const topStop = plan.recommendations[0]?.name || "No reachable stop";
+          const stopText = plan.decision.status === "no_stop_needed" ? "No stop needed" : topStop;
+          return `
+            <button class="route-option ${index === state.selectedRouteIndex ? "active" : ""}" type="button" data-route-index="${index}">
+              <span><b>${escapeHtml(plan.route.label || `Route ${index + 1}`)}</b><small>${escapeHtml(stopText)}</small></span>
+              <span><b>${plan.route.distance_km} km</b><small>${escapeHtml(routeDuration(plan))}</small></span>
+            </button>`;
+        }).join("")}
+      </div>`;
+    container.querySelectorAll(".route-option").forEach((button) => {
+      button.addEventListener("click", () => {
+        const nextIndex = Number(button.dataset.routeIndex);
+        const nextPlan = state.routePlans[nextIndex];
+        if (!nextPlan) return;
+        renderPlan(nextPlan, nextIndex, true);
+      });
+    });
+  }
+
   function stationCard(station, index, chargingRequired) {
     const verifiedLabel = station.connector_verified
       ? `Fits your plug · ${station.matching_connectors.join(", ")}`
@@ -245,7 +300,12 @@
       </article>`;
   }
 
-  function renderPlan(data) {
+  function renderPlan(data, selectedIndex = 0, keepRouteOptions = false) {
+    if (!keepRouteOptions && Array.isArray(data.route_options) && data.route_options.length) {
+      state.routePlans = data.route_options;
+      data = state.routePlans[selectedIndex] || data;
+    }
+    state.selectedRouteIndex = selectedIndex;
     drawPlan(data);
     form.hidden = true;
     document.querySelector("#intro").hidden = true;
@@ -255,6 +315,7 @@
         <span class="decision-icon">${data.decision.status === "no_stop_needed" ? "✓" : data.decision.status === "stop_required" ? "⚡" : "!"}</span>
         <h3>${escapeHtml(data.decision.title)}</h3><p>${escapeHtml(data.decision.summary)}</p>
       </div>`;
+    renderRouteOptions();
     const duration = data.route.duration_minutes
       ? data.route.duration_minutes < 60
         ? `${data.route.duration_minutes} min`

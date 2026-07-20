@@ -37,6 +37,8 @@ def test_plan_endpoint_accepts_supplied_route_without_external_call():
     assert response.status_code == 200
     data = response.get_json()
     assert data["route"]["distance_km"] == 13
+    assert len(data["route_options"]) == 1
+    assert data["route_options"][0]["route"]["label"] == "Fastest route"
     assert data["station_count"] > 0
 
 

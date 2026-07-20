@@ -10,11 +10,12 @@ from flask import Flask, jsonify, render_template, request
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 from ev_route.engine import InputError, load_stations, parse_point, recommend_stations
-from ev_route.services import ExternalServiceError, geocode, route_or_fallback
+from ev_route.services import ExternalServiceError, geocode, route_options_or_fallback
 
 
 ROOT = Path(__file__).resolve().parent
 STATION_FILE = ROOT / "data" / "charging_stations.csv"
+ASSET_VERSION = os.getenv("RENDER_GIT_COMMIT", "local")[:8]
 
 
 def create_app(test_config: dict[str, Any] | None = None) -> Flask:
@@ -34,7 +35,7 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
 
     @app.get("/")
     def index():
-        return render_template("index.html", station_count=len(stations))
+        return render_template("index.html", station_count=len(stations), asset_version=ASSET_VERSION)
 
     @app.get("/api/health")
     def health():
@@ -60,10 +61,14 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
             destination = parse_point(payload.get("destination"), "destination")
             supplied_route = payload.get("route") if isinstance(payload.get("route"), dict) else {}
             if supplied_route.get("points") and supplied_route.get("distance_km"):
-                route_data = supplied_route
+                route_options = [supplied_route]
             else:
-                route_data = route_or_fallback(origin, destination)
-            result = recommend_stations(payload, stations, route_data)
+                route_options = route_options_or_fallback(origin, destination)
+            plans = [recommend_stations(payload, stations, route_data) for route_data in route_options]
+            for index, plan in enumerate(plans):
+                plan["route"]["option_index"] = index
+                plan["route"]["label"] = "Fastest route" if index == 0 else f"Route {index + 1}"
+            result = {**plans[0], "route_options": plans}
             return jsonify(result)
         except InputError as exc:
             return jsonify({"error": str(exc)}), 400
