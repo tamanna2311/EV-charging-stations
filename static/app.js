@@ -53,7 +53,7 @@
     document.querySelector(`#${kind}-input`).addEventListener("input", () => {
       state.places[kind] = null;
       const status = document.querySelector(`#${kind}-status`);
-      status.textContent = "We’ll search this place when you plan";
+      status.textContent = "We will find this place when you plan";
       status.className = "place-status";
     });
   });
@@ -64,13 +64,13 @@
     const status = document.querySelector(`#${kind}-status`);
     const query = input.value.trim();
     if (query.length < 3) throw new Error(`Enter a valid ${kind === "origin" ? "starting point" : "destination"}.`);
-    status.textContent = "Searching…";
+    status.textContent = "Finding this place...";
     status.className = "place-status loading";
     const response = await fetch(`/api/geocode?q=${encodeURIComponent(query)}`);
     const data = await response.json();
     if (!response.ok) throw new Error(data.error || "Location search failed.");
     if (!data.results.length) throw new Error(`We couldn't find “${query}”. Try a city or more specific address.`);
-    updatePlace(kind, data.results[0], "Best matching location selected");
+    updatePlace(kind, data.results[0], "Place found");
     return data.results[0];
   }
 
@@ -97,7 +97,7 @@
       label: `${event.latlng.lat.toFixed(5)}, ${event.latlng.lng.toFixed(5)}`,
       latitude: event.latlng.lat,
       longitude: event.latlng.lng,
-    }, "Point selected on map");
+    }, "Map point selected");
     cancelPick();
   });
 
@@ -108,7 +108,7 @@
       status.className = "place-status error";
       return;
     }
-    status.textContent = "Requesting your location…";
+    status.textContent = "Checking your current location...";
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const place = {
@@ -116,7 +116,7 @@
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
         };
-        updatePlace("origin", place, `Current location · ±${Math.round(position.coords.accuracy)} m`);
+        updatePlace("origin", place, `Using your location, about ${Math.round(position.coords.accuracy)} m accuracy`);
         map.setView([place.latitude, place.longitude], 13);
       },
       () => {
@@ -171,14 +171,14 @@
   function setLoading(loading) {
     planButton.disabled = loading;
     planButton.classList.toggle("loading", loading);
-    planButton.querySelector("span").textContent = loading ? "Calculating route and battery" : "Find my best charging stop";
-    if (loading) mapStatus.textContent = "Calculating your safest charging plan…";
+    planButton.querySelector("span").textContent = loading ? "Checking your route and battery" : "Show my charging plan";
+    if (loading) mapStatus.textContent = "Checking where you can safely stop";
   }
 
   function showError(message) {
     formError.textContent = message;
     formError.hidden = false;
-    mapStatus.textContent = "Trip plan needs attention";
+    mapStatus.textContent = "Update the details to continue";
   }
 
   function clearMapResults() {
@@ -202,7 +202,7 @@
           html: `<div class="station-marker ${station.connector_verified ? "" : "unverified"}">${index + 1}</div>`,
           iconSize: [31, 31], iconAnchor: [16, 16],
         }),
-      }).bindPopup(`<p class="popup-title">${escapeHtml(station.name)}</p><div class="popup-meta">Arrive ${station.arrival_soc_percent}% · ${station.estimated_total_detour_km} km detour · score ${station.score}</div>`).addTo(map);
+      }).bindPopup(`<p class="popup-title">${escapeHtml(station.name)}</p><div class="popup-meta">Arrive with ${station.arrival_soc_percent}% · ${station.estimated_total_detour_km} km detour</div>`).addTo(map);
       state.stationMarkers.push(marker);
     });
     const bounds = state.routeLine.getBounds();
@@ -220,25 +220,25 @@
 
   function stationCard(station, index, chargingRequired) {
     const verifiedLabel = station.connector_verified
-      ? `Verified match · ${station.matching_connectors.join(", ")}`
-      : `Verify connector · ${station.connectors.join(", ")}`;
+      ? `Fits your plug · ${station.matching_connectors.join(", ")}`
+      : `Check plug before relying on this stop · ${station.connectors.join(", ")}`;
     const chargeText = chargingRequired
       ? station.can_finish_after_charge
-        ? `Charge from about <b>${station.arrival_soc_percent}%</b> to <b>${station.suggested_target_soc_percent}%</b> · add ${station.energy_to_add_kwh} kWh${station.estimated_charge_minutes ? ` · ~${station.estimated_charge_minutes} min` : ""}`
-        : "A full charge here may not complete the route; plan another stop."
-      : `Optional backup. You should arrive here with about <b>${station.arrival_soc_percent}%</b>.`;
+        ? `Stop here with about <b>${station.arrival_soc_percent}%</b> battery. Charge to around <b>${station.suggested_target_soc_percent}%</b>${station.estimated_charge_minutes ? `, about ${station.estimated_charge_minutes} min` : ""}.`
+        : "This stop may still leave you short of the destination. Choose another stop or start with more charge."
+      : `You can finish without stopping. This is a backup option where you should arrive with about <b>${station.arrival_soc_percent}%</b>.`;
     return `
       <article class="station-card ${index === 0 ? "best" : ""}">
         <div class="station-top">
           <div class="station-name"><span class="station-rank">${index + 1}</span><h4>${escapeHtml(station.name)}</h4><p>${escapeHtml(station.operator_name)}</p></div>
-          <span class="score">${station.score}/100</span>
+          <span class="score">${index === 0 ? "Best fit" : "Option " + (index + 1)}</span>
         </div>
         <span class="verification-badge ${station.connector_verified ? "" : "unverified"}">${escapeHtml(verifiedLabel)}</span>
         <div class="station-facts">
-          <div><b>${station.distance_from_start_km} km</b><span>from start</span></div>
+          <div><b>${station.distance_from_start_km} km</b><span>after start</span></div>
           <div><b>${station.estimated_total_detour_km} km</b><span>detour</span></div>
-          <div><b>${station.arrival_soc_percent}%</b><span>arrival</span></div>
-          <div><b>${station.power_kw ? `${station.power_kw} kW` : "Unknown"}</b><span>listed power</span></div>
+          <div><b>${station.arrival_soc_percent}%</b><span>battery there</span></div>
+          <div><b>${station.power_kw ? `${station.power_kw} kW` : "Check app"}</b><span>charger speed</span></div>
         </div>
         <div class="charge-instruction">${chargeText}</div>
         <div class="reason-list">${station.reasons.map((reason) => `<span>${escapeHtml(reason)}</span>`).join("")}</div>
@@ -261,20 +261,20 @@
         : `${Math.floor(data.route.duration_minutes / 60)}h ${data.route.duration_minutes % 60}m`
       : "Estimated";
     document.querySelector("#metrics").innerHTML = [
-      metric(`${data.route.distance_km} km`, "Road distance"),
+      metric(`${data.route.distance_km} km`, "Trip distance"),
       metric(duration, "Drive time"),
-      metric(`${data.battery.energy_needed_kwh} kWh`, "Trip energy"),
-      metric(`${data.battery.safe_range_km} km`, "Safe range"),
-      metric(`${data.battery.estimated_direct_arrival_soc_percent}%`, "Direct arrival"),
-      metric(`${data.battery.reserve_soc_percent}%`, "Reserve"),
+      metric(`${data.battery.energy_needed_kwh} kWh`, "Energy needed"),
+      metric(`${data.battery.safe_range_km} km`, "Range before reserve"),
+      metric(`${data.battery.estimated_direct_arrival_soc_percent}%`, "Arrival without stop"),
+      metric(`${data.battery.reserve_soc_percent}%`, "Battery to keep"),
     ].join("");
     const chargingRequired = data.decision.status !== "no_stop_needed";
     document.querySelector("#station-results").innerHTML = data.recommendations.length
-      ? `<div class="station-section-title"><h3>${chargingRequired ? "Best reachable stops" : "Optional backup stations"}</h3><span>${data.candidate_count} candidates scored</span></div>${data.recommendations.map((station, index) => stationCard(station, index, chargingRequired)).join("")}`
-      : `<div class="empty-box"><b>No safe station match found.</b><br>Increase current charge, widen max detour, or enable unverified fallback stations.</div>`;
+      ? `<div class="station-section-title"><h3>${chargingRequired ? "Best places to stop" : "Good backups on your route"}</h3><span>${data.candidate_count} nearby options checked</span></div>${data.recommendations.map((station, index) => stationCard(station, index, chargingRequired)).join("")}`
+      : `<div class="empty-box"><b>No reachable charging stop found.</b><br>Try starting with more battery, allowing a longer detour, or showing stations with missing plug details.</div>`;
     document.querySelector("#warnings").innerHTML = data.warnings.length
       ? `<div class="warning-box">${data.warnings.map((warning) => `• ${escapeHtml(warning)}`).join("<br>")}</div>` : "";
-    mapStatus.textContent = data.route.source === "osrm" ? "Live road route · battery plan ready" : "Estimated route · battery plan ready";
+    mapStatus.textContent = data.route.source === "osrm" ? "Route ready with charging stops" : "Estimated route ready";
     results.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 

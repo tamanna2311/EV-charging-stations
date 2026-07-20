@@ -231,19 +231,19 @@ def _station_reasons(
     power_kw: float | None,
     confidence: float,
 ) -> list[str]:
-    reasons = ["Verified compatible connector" if verified_match else "Connector requires verification"]
+    reasons = ["Fits your selected plug" if verified_match else "Plug details need a quick check"]
     if corridor_distance <= 1:
-        reasons.append("Less than 1 km from the route")
+        reasons.append("Very close to your route")
     elif corridor_distance <= 3:
-        reasons.append("Low route deviation")
+        reasons.append("Small detour from your route")
     if arrival_soc >= reserve_soc + 5:
-        reasons.append("Comfortable arrival battery")
+        reasons.append("Comfortable battery on arrival")
     else:
-        reasons.append("Reachable before reserve is used")
+        reasons.append("Reachable before your reserve")
     if power_kw and power_kw >= 25:
-        reasons.append("DC fast-charging power listed")
+        reasons.append("Fast charger listed")
     if confidence >= 60:
-        reasons.append("Higher-confidence station data")
+        reasons.append("Better station details available")
     return reasons
 
 
@@ -434,28 +434,28 @@ def recommend_stations(payload: dict[str, Any], stations: list[Station], route_d
 
     warnings: list[str] = []
     if route.source != "osrm":
-        warnings.append("Live road routing was unavailable, so distance and route geometry are estimated.")
+        warnings.append("Road routing is estimated for this trip, so confirm the distance before leaving.")
     if any(not item["connector_verified"] for item in recommendations):
-        warnings.append("Some fallback stations have unverified connector data; confirm in the operator app before departure.")
+        warnings.append("Some shown stops are missing plug details. Check the station app before relying on them.")
     if charging_required and not recommendations:
-        warnings.append("No reachable compatible station was found within the selected detour. Start with more charge or widen the search.")
+        warnings.append("No reachable stop was found within your detour limit. Start with more battery or allow a longer detour.")
     if not charging_required:
-        warnings.append("No charging stop is required; shown stations are optional backups.")
+        warnings.append("You can reach the destination without charging. The stops shown are backup options.")
 
     decision = (
-        "Charge before departure"
+        "Charge before you start"
         if charging_required and not recommendations
-        else "Charging stop required"
+        else "Stop to charge on this trip"
         if charging_required
-        else "No charging stop needed"
+        else "You can reach without charging"
     )
     return {
         "decision": {
             "status": "charge_before_departure" if charging_required and not recommendations else "stop_required" if charging_required else "no_stop_needed",
             "title": decision,
             "summary": (
-                f"The trip needs about {energy_needed_kwh:.1f} kWh including the {safety_buffer:.0f}% driving buffer, "
-                f"while {safe_available_kwh:.1f} kWh is available above your reserve."
+                f"Your trip needs about {energy_needed_kwh:.1f} kWh with a {safety_buffer:.0f}% safety margin. "
+                f"You have {safe_available_kwh:.1f} kWh available before your reserve."
             ),
         },
         "origin": origin.as_dict(),
