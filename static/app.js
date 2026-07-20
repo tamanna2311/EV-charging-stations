@@ -17,9 +17,9 @@
 
   const map = L.map("map", { zoomControl: false, preferCanvas: true }).setView([28.58, 77.205], 12);
   L.control.zoom({ position: "bottomright" }).addTo(map);
-  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
     maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
   }).addTo(map);
 
   const markerIcon = (kind) => L.divIcon({
@@ -191,7 +191,7 @@
   function drawPlan(data) {
     clearMapResults();
     const geometry = data.route.geometry;
-    state.routeLine = L.polyline(geometry, { color: "#0b7d53", weight: 6, opacity: .88, lineCap: "round", lineJoin: "round" }).addTo(map);
+    state.routeLine = L.polyline(geometry, { color: "#17e88f", weight: 6, opacity: .92, lineCap: "round", lineJoin: "round" }).addTo(map);
     setMarker("origin", data.origin);
     setMarker("destination", data.destination);
 
