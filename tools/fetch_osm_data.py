@@ -20,13 +20,30 @@ area["ISO3166-1"="IN"][admin_level="2"]->.searchArea;
 out center;
 """
 
+def positive_number(value):
+    if value in (None, ""):
+        return ""
+    text = str(value).strip()
+    try:
+        number = float(text)
+    except ValueError:
+        return ""
+    if number <= 0:
+        return ""
+    return str(int(number)) if number.is_integer() else str(number)
+
+
 def map_osm_connector(tags):
     # OSM often uses socket:<type> keys, e.g., socket:type2, socket:ccs
     # We will try to map to our known types
     connectors = []
     if tags.get("socket:type2") in ("yes", "1", "2", "3", "4"):
         connectors.append("type2")
-    if tags.get("socket:ccs") in ("yes", "1", "2", "3", "4") or tags.get("socket:ccs2") in ("yes", "1", "2", "3", "4"):
+    if (
+        tags.get("socket:ccs") in ("yes", "1", "2", "3", "4")
+        or tags.get("socket:ccs2") in ("yes", "1", "2", "3", "4")
+        or tags.get("socket:type2_combo") in ("yes", "1", "2", "3", "4")
+    ):
         connectors.append("ccs2")
     if tags.get("socket:chademo") in ("yes", "1", "2", "3", "4"):
         connectors.append("chademo")
@@ -120,7 +137,7 @@ def main():
         
         # capacity -> power? or socket:<type>:output -> power?
         power_kw = ""
-        capacity_tag = tags.get("capacity")
+        capacity_tag = positive_number(tags.get("capacity"))
         # In OSM, capacity usually means number of vehicles. 
         # For power, usually socket:<type>:output or charging_station:output
         # Let's try charging_station:output
@@ -159,7 +176,7 @@ def main():
                 "connector_type": connector,
                 "power_kw": power_kw,
                 "current_type": "",
-                "connector_count": capacity_tag or 1,
+                "connector_count": capacity_tag or "1",
                 "payment_modes": "",
                 "amenities": "",
                 "source_name": "openstreetmap",
@@ -170,7 +187,7 @@ def main():
             })
     
     with open(output_path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=csv_headers)
+        writer = csv.DictWriter(f, fieldnames=csv_headers, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
         

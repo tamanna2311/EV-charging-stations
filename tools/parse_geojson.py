@@ -4,11 +4,45 @@ import datetime
 import json
 from pathlib import Path
 
+ID_PREFIXES = {"n": "node", "w": "way", "r": "relation"}
+
+
+def osm_element_id(feature, props):
+    raw_id = feature.get("id") or props.get("@id") or props.get("id") or props.get("osm_id")
+    if raw_id is None:
+        return None, None
+    raw_id = str(raw_id)
+    if "/" in raw_id:
+        el_type, numeric_id = raw_id.split("/", 1)
+        return el_type, numeric_id
+    if len(raw_id) > 1 and raw_id[0] in ID_PREFIXES and raw_id[1:].isdigit():
+        return ID_PREFIXES[raw_id[0]], raw_id[1:]
+    osm_type = props.get("osm_type") or "node"
+    return str(osm_type), raw_id
+
+
+def positive_number(value):
+    if value in (None, ""):
+        return ""
+    text = str(value).strip()
+    try:
+        number = float(text)
+    except ValueError:
+        return ""
+    if number <= 0:
+        return ""
+    return str(int(number)) if number.is_integer() else str(number)
+
+
 def map_osm_connector(tags):
     connectors = []
     if tags.get("socket:type2") in ("yes", "1", "2", "3", "4"):
         connectors.append("type2")
-    if tags.get("socket:ccs") in ("yes", "1", "2", "3", "4") or tags.get("socket:ccs2") in ("yes", "1", "2", "3", "4"):
+    if (
+        tags.get("socket:ccs") in ("yes", "1", "2", "3", "4")
+        or tags.get("socket:ccs2") in ("yes", "1", "2", "3", "4")
+        or tags.get("socket:type2_combo") in ("yes", "1", "2", "3", "4")
+    ):
         connectors.append("ccs2")
     if tags.get("socket:chademo") in ("yes", "1", "2", "3", "4"):
         connectors.append("chademo")
@@ -62,12 +96,9 @@ def main():
         props = feat.get("properties", {})
         geom = feat.get("geometry", {})
         
-        # In osmium export, 'id' is sometimes in the feature itself, e.g., "id": "node/123"
-        el_id = feat.get("id") or props.get("id", "unknown/0")
-        if "/" in str(el_id):
-            el_type, numeric_id = str(el_id).split("/", 1)
-        else:
-            el_type, numeric_id = "node", str(el_id)
+        el_type, numeric_id = osm_element_id(feat, props)
+        if not el_type or not numeric_id:
+            continue
             
         station_id = f"osm-{el_type}-{numeric_id}"
         
@@ -100,7 +131,7 @@ def main():
                 pass
 
         connectors = map_osm_connector(props)
-        capacity_tag = props.get("capacity") or "1"
+        capacity_tag = positive_number(props.get("capacity")) or "1"
         
         for connector in connectors:
             rows.append({
@@ -131,7 +162,7 @@ def main():
             })
             
     with open(csv_path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=csv_headers)
+        writer = csv.DictWriter(f, fieldnames=csv_headers, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
         

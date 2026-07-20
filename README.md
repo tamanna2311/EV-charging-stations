@@ -6,7 +6,7 @@ EV RouteWise is a route-aware charging recommendation app for electric-vehicle t
 2. If not, which compatible charging stations are reachable before that reserve is used?
 3. At the best stop, how much energy should the driver add and roughly how long might that take?
 
-The repository includes a responsive Flask web app, a reusable Python recommendation engine, a JSON CLI, tests, a Render Blueprint, and an OpenStreetMap-derived Delhi-NCR station seed.
+The repository includes a responsive Flask web app, a reusable Python recommendation engine, a JSON CLI, tests, a Render Blueprint, and an OpenStreetMap-derived India charging-station seed.
 
 ## Why this is implementable
 
@@ -127,7 +127,7 @@ Planner API (this Flask app / future service)
             └── OCPI/CPO live availability and prices
 ```
 
-The seed CSV represents 159 OpenStreetMap station nodes, collapsed by the app into 147 nearby physical sites, and has incomplete connector fields. It is useful for the proof of concept, not a complete production catalogue. Before real-world launch, ingest verified operator data, store route/station geometry in PostGIS, add live availability and pricing, model elevation/weather, and support multi-stop optimisation for trips longer than one full-charge range.
+The seed CSV currently contains 537 OpenStreetMap-derived charging-station rows across India. The app collapses nearby duplicate rows and multi-connector rows into 509 physical charging places at load time. Many OpenStreetMap entries still have missing plug, power, operator, and live-availability details, so this is useful for the proof of concept but not a complete production catalogue. Before real-world launch, ingest verified operator data, store route/station geometry in PostGIS, add live availability and pricing, model elevation/weather, and support multi-stop optimisation for trips longer than one full-charge range.
 
 ## Data and usage notes
 
