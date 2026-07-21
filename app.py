@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
-from typing import Any, Literal
+from typing import Any, Literal, Optional
 
 from fastapi import Body, FastAPI, HTTPException, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -33,7 +33,7 @@ class PointInput(BaseModel):
 
     latitude: float = Field(..., examples=[28.6129])
     longitude: float = Field(..., examples=[77.2295])
-    label: str | None = Field(default=None, examples=["India Gate"])
+    label: Optional[str] = Field(default=None, examples=["India Gate"])
 
 
 class VehicleInput(BaseModel):
@@ -69,9 +69,9 @@ class RouteInput(BaseModel):
     model_config = ConfigDict(extra="allow")
 
     points: list[PointInput] = Field(default_factory=list)
-    distance_km: float | None = Field(default=None, gt=0, examples=[13])
-    duration_minutes: float | None = Field(default=None, ge=0, examples=[35])
-    source: str | None = Field(default=None, examples=["osrm"])
+    distance_km: Optional[float] = Field(default=None, gt=0, examples=[13])
+    duration_minutes: Optional[float] = Field(default=None, ge=0, examples=[35])
+    source: Optional[str] = Field(default=None, examples=["osrm"])
 
 
 class TripPlanRequest(BaseModel):
@@ -83,7 +83,7 @@ class TripPlanRequest(BaseModel):
     destination: PointInput
     vehicle: VehicleInput
     preferences: PreferencesInput = Field(default_factory=PreferencesInput)
-    route: RouteInput | None = None
+    route: Optional[RouteInput] = None
 
 
 TRIP_PLAN_EXAMPLE: dict[str, Any] = {
@@ -116,7 +116,7 @@ def _allowed_origins() -> list[str]:
     return [origin.strip() for origin in raw.split(",") if origin.strip()]
 
 
-def create_app(test_config: dict[str, Any] | None = None) -> FastAPI:
+def create_app(test_config: Optional[dict[str, Any]] = None) -> FastAPI:
     """Create the ASGI app.
 
     ``test_config`` is accepted to keep the existing test factory API stable.
