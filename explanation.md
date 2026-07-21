@@ -22,11 +22,11 @@ This makes the app more useful than a basic charger locator because it connects 
 The app has four main layers:
 
 1. Frontend web app
-2. Flask API server
+2. FastAPI API server
 3. EV route recommendation engine
 4. Charging-station dataset
 
-The user opens the web app, enters trip and EV details, and clicks "Show my charging plan." The browser sends those details to the Flask backend. The backend gets road route geometry, calculates battery feasibility, searches the local station dataset, ranks usable charging stops, and sends the plan back to the browser. The browser then draws the route and recommended stops on a Leaflet map.
+The user opens the web app, enters trip and EV details, and clicks "Show my charging plan." The browser sends those details to the FastAPI backend. The backend gets road route geometry, calculates battery feasibility, searches the local station dataset, ranks usable charging stops, and sends the plan back to the browser. The browser then draws the route and recommended stops on a Leaflet map.
 
 ## User inputs we collect
 
@@ -102,7 +102,7 @@ The pipeline is:
 3. Export the filtered data to GeoJSON while preserving OSM IDs.
 4. Parse the GeoJSON with `tools/parse_geojson.py`.
 5. Write the normalized output to `data/charging_stations.csv`.
-6. The Flask app loads that CSV at startup.
+6. The FastAPI app loads that CSV at startup.
 
 The important technical detail is that the GeoJSON export must preserve OSM IDs:
 
@@ -138,13 +138,16 @@ So OpenStreetMap is a good starting dataset, but not enough for production-grade
 
 ## How the backend works
 
-The Flask backend is defined in `app.py`.
+The FastAPI backend is defined in `app.py`.
 
 Main endpoints:
 
 | Endpoint | Purpose |
 |---|---|
 | `GET /` | Serves the planner UI |
+| `GET /docs` | Swagger UI for testing and sharing the API |
+| `GET /redoc` | Alternative API documentation view |
+| `GET /openapi.json` | Machine-readable OpenAPI schema |
 | `GET /api/health` | Returns how many charging places are loaded |
 | `GET /api/geocode?q=...` | Searches places in India using Nominatim |
 | `POST /api/plan` | Builds the EV charging plan |
@@ -340,7 +343,7 @@ In that case, the UI says "One practical route found." It does not create fake a
 
 Startup flow:
 
-1. `app.py` creates the Flask app.
+1. `app.py` creates the FastAPI app.
 2. `load_stations()` reads `data/charging_stations.csv`.
 3. Rows with the same station ID are grouped together.
 4. Multiple connector rows for the same OSM element become one station with multiple plug types.
@@ -369,7 +372,7 @@ Users should not see duplicate cards for what is effectively the same charging p
 
 | File | Purpose |
 |---|---|
-| `app.py` | Flask API, route planning endpoint, health endpoint, security headers |
+| `app.py` | FastAPI app, route planning endpoint, health endpoint, OpenAPI docs, security headers |
 | `ev_route/engine.py` | Main recommendation logic, battery math, station filtering, scoring |
 | `ev_route/services.py` | Nominatim geocoding and OSRM route fetching |
 | `data/charging_stations.csv` | Normalized India charging-station dataset |

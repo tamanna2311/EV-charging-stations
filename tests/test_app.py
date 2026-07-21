@@ -1,15 +1,25 @@
 from app import create_app
+from fastapi.testclient import TestClient
 
 
 def test_health_endpoint_reports_loaded_station_count():
-    client = create_app({"TESTING": True}).test_client()
+    client = TestClient(create_app({"TESTING": True}))
     response = client.get("/api/health")
     assert response.status_code == 200
-    assert response.get_json()["stations_loaded"] > 0
+    assert response.json()["stations_loaded"] > 0
+
+
+def test_openapi_docs_are_available():
+    client = TestClient(create_app({"TESTING": True}))
+    docs_response = client.get("/docs")
+    schema_response = client.get("/openapi.json")
+    assert docs_response.status_code == 200
+    assert schema_response.status_code == 200
+    assert schema_response.json()["info"]["title"] == "EV RouteWise API"
 
 
 def test_plan_endpoint_accepts_supplied_route_without_external_call():
-    client = create_app({"TESTING": True}).test_client()
+    client = TestClient(create_app({"TESTING": True}))
     response = client.post(
         "/api/plan",
         json={
@@ -35,7 +45,7 @@ def test_plan_endpoint_accepts_supplied_route_without_external_call():
         },
     )
     assert response.status_code == 200
-    data = response.get_json()
+    data = response.json()
     assert data["route"]["distance_km"] == 13
     assert len(data["route_options"]) == 1
     assert data["route_options"][0]["route"]["label"] == "Fastest route"
@@ -43,7 +53,7 @@ def test_plan_endpoint_accepts_supplied_route_without_external_call():
 
 
 def test_plan_endpoint_returns_useful_validation_error():
-    client = create_app({"TESTING": True}).test_client()
+    client = TestClient(create_app({"TESTING": True}))
     response = client.post("/api/plan", json={"origin": {}})
-    assert response.status_code == 400
-    assert "latitude" in response.get_json()["error"]
+    assert response.status_code == 422
+    assert "destination" in response.text

@@ -8,7 +8,7 @@ EV RouteWise is a route-aware charging recommendation app for electric-vehicle t
 2. If not, which compatible charging stations are reachable before that reserve is used?
 3. At the best stop, how much energy should the driver add and roughly how long might that take?
 
-The repository includes a responsive Flask web app, a reusable Python recommendation engine, a JSON CLI, tests, a Render Blueprint, and an OpenStreetMap-derived India charging-station seed.
+The repository includes a responsive FastAPI web app, a reusable Python recommendation engine, automatic Swagger/OpenAPI docs, a JSON CLI, tests, a Render Blueprint, and an OpenStreetMap-derived India charging-station seed.
 
 ## Why this is implementable
 
@@ -62,10 +62,11 @@ Python 3.11+ is recommended.
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements-dev.txt
-flask --app app run --debug
+uvicorn app:app --reload
 ```
 
-Open <http://127.0.0.1:5000>.
+Open <http://127.0.0.1:8000>.
+API docs are available at <http://127.0.0.1:8000/docs> when using the default Uvicorn port.
 
 Run the checks:
 
@@ -77,6 +78,12 @@ python tools/recommend_charging_stations.py
 The CLI reads `input/trip_input.json` and writes `output/recommendation_output.json`.
 
 ## API
+
+Interactive API documentation is available at:
+
+- Swagger UI: `/docs`
+- ReDoc: `/redoc`
+- OpenAPI schema: `/openapi.json`
 
 ### `POST /api/plan`
 
@@ -121,7 +128,7 @@ For sustained traffic, replace the public demo services with a commercial route/
 Web/mobile client
     ├── route + EV inputs
     ▼
-Planner API (this Flask app / future service)
+Planner API (this FastAPI app)
     ├── routing and elevation provider
     ├── energy model using weather + vehicle telemetry
     └── station query in PostgreSQL/PostGIS

@@ -13,7 +13,7 @@
 
 ## Main files
 
-- `app.py` — Flask routes and production entry point.
+- `app.py` — FastAPI routes, OpenAPI docs and production entry point.
 - `ev_route/engine.py` — validation, energy model, geospatial filtering and ranking.
 - `ev_route/services.py` — cached geocoding and road-routing clients.
 - `templates/index.html` — accessible planner markup.
