@@ -216,5 +216,32 @@ def create_app(test_config: Optional[dict[str, Any]] = None) -> FastAPI:
     return app
 
 
+class DualProtocolApp:
+    """Expose the same FastAPI app to ASGI and legacy WSGI servers.
+
+    Render service settings can lag behind repository Procfile/render.yaml
+    changes. This adapter lets ``gunicorn app:app`` work with either the
+    default WSGI worker or Uvicorn's ASGI worker.
+    """
+
+    def __init__(self, fastapi_app: FastAPI) -> None:
+        self.asgi_app = fastapi_app
+        self.wsgi_app = ASGIMiddleware(fastapi_app)
+
+    def __call__(self, *args):
+        if len(args) == 1:
+            scope = args[0]
+
+            async def asgi_instance(receive, send):
+                await self.asgi_app(scope, receive, send)
+
+            return asgi_instance
+        if len(args) == 3:
+            return self.asgi_app(*args)
+        if len(args) == 2:
+            return self.wsgi_app(*args)
+        raise TypeError("Expected ASGI or WSGI call signature")
+
+
 asgi_app = create_app()
-app = ASGIMiddleware(asgi_app)
+app = DualProtocolApp(asgi_app)
