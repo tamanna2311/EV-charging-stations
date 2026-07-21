@@ -6,6 +6,7 @@ import os
 from pathlib import Path
 from typing import Any, Literal, Optional
 
+from a2wsgi import ASGIMiddleware
 from fastapi import Body, FastAPI, HTTPException, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -215,4 +216,5 @@ def create_app(test_config: Optional[dict[str, Any]] = None) -> FastAPI:
     return app
 
 
-app = create_app()
+asgi_app = create_app()
+app = ASGIMiddleware(asgi_app)

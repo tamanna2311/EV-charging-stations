@@ -62,7 +62,7 @@ Python 3.11+ is recommended.
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements-dev.txt
-uvicorn app:app --reload
+uvicorn app:asgi_app --reload
 ```
 
 Open <http://127.0.0.1:8000>.
